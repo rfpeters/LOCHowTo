@@ -1,0 +1,84 @@
+/*
+Author: Ryan Peters
+Date: 03/07/16
+Assignment: How To
+Description: CSS file that is used to style the guide
+*/
+.page{
+	width: 1000px;
+	margin: auto;
+	font-size: 20px;
+}
+
+.page_header {
+	font: 40px "Currier", sans-serif; 
+}
+
+.sub_header{
+	font: 30px "Currier", sans-serif;
+}
+
+.body{
+	display: table;
+	table-layout: fixed;
+}
+.body div{
+	display: table-cell;
+}
+
+.navigation{
+	font: 20px "Times New Roman";
+	width: 300px;
+	padding-left: 15px;
+}
+
+.navigation ol {
+	margin-left: 0;
+	padding-left: 0;
+	list-style-type: none;
+}
+
+a{
+	text-decoration: none;
+	color: #1e90ff;
+}
+
+div.text {
+	width: 700px;
+	word-wrap: normal;
+	font: 1em "Times New Roman";
+}
+
+code {
+	background-color: #fdc2cb;
+	color: #ff3030;
+}
+
+.pager {
+	size: 50%;
+}
+
+.pager a {
+	display: inline-block;
+	height: 40px;
+	width: 70px;
+	padding-top: 15px;
+	text-align: center;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 5px;
+}
+
+pre {
+	padding-top: 15px;
+	width: 700px;
+	font-size: 15px;
+	word-wrap: break-word;
+	word-break: break-all;
+	border-style: solid;
+	border-width: 1px;
+	background-color: #e5e5e5;
+}
+	
+
+

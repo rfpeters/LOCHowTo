@@ -1,0 +1,41 @@
+<h3>Retrieving Pictures</h3>
+	{{#each picture}}
+	<figure>
+		<img src={{img_src}} alt={{img_alt}} height=400px width=400px>
+		<figcaption>{{img_title}}</figcaption>
+	</figure>
+	{{/each}}
+	
+	<p>The images and captions were retrieved using the following code in the node file.
+	<pre>
+	request({url:'http://loc.gov/pictures/search/?q=world war 2&c=5&fo=json', json:true}, 
+	function(err, response, body) {
+		if(!err && res.statusCode < 400){
+			context.title='Using The API To Display Pictures';
+			var picParams = [];
+			for(var p in body.request){
+				picParams.push({img_src:'http:' + body.results[p].image.full, 
+				img_alt:body.results[p].image.alt, img_title:body.results[p].title})
+			}
+			context.picture = picParams;
+			res.render('dispPics', context);
+		} else {
+			if(response){
+				console.log(response.statusCode);
+			}
+			next(err);
+		}
+	});
+	</pre>
+	
+	<p>A request is sent to the Library of Congress Prints and Pictures Online Catalog using the 
+	the request module.  There are three parameters in the query string; search term, count, and 
+	format.  The response is in JSON format and contains information about the first five items 
+	in the search results.  The request string is below.
+	<pre>
+	http://loc.gov/pictures/search/?q=world war 2&c=5&fo=json
+	</pre></p>
+	
+	<p>When pulling an image source URL from the response it does not have the protocol.  In order 
+	to display an image <code>http:</code> needs to be added to the beginning of the string in the 
+	image object in the results array in the response.

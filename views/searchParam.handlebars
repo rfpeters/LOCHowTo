@@ -1,0 +1,94 @@
+<h3>The Search API</h3>
+	<p>Before moving on to the search API, wee need to discuss one of the API parameters.  
+	The code shows how to format the request using the request module for Javascript.<br>
+	
+	<h4>Format</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures
+	/search/?fo=json', json:true}
+	</pre>
+	The format parameter is <code>fo</code>.  The documentation provided by the Library of 
+	Congress lists this a result option but it does not effect the serach results.  It determines 
+	how the response is formatted.  It can be added to any of the API calls.  There are three 
+	values that can be used.  <code>html</code> will send an HTML formatted response, <code>json</code> 
+	will send a JSON formatted response, and <code>rss</code> will send XML formatted RSS response.  
+	Any other value will cause an error (500).</p>
+	
+	<h4>Searching</h4>
+	<p>The next sections are going to discuss the parameters that can be added to the search URL.  
+	There are two types of parameters that can be used.  One set parameters is used to refine
+	the search and the other set is used change how the search results are displayed.  This 
+	section is going to look at the parameters that refine the search.</p>
+	
+	<h4>Query</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures
+	/search/?q=world war 2&fo=json', json:true}
+	</pre>
+	The query/search term parameter is <code>q</code>.  The term(s) you want to search for
+	are entered as the values.  The default value for query is null.<br>
+	
+	<h4>Facets</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures
+	/search/?q=world war 2&fa=displayed:grid&fo=json', json:true}
+	</pre>
+	The facets parameter is <code>fa</code>.  It narrows the search based on how items are 
+	stored in the catalog.  There are three values that can be used.  <code>anywhere</code> 
+	will show results for items that have larger images which can be accessed online or in 
+	person at the Library of Congress.  <code>c_only</code> shows results that for items 
+	that have larger images that are only available at the Library of Congress.  <code>not_digitized</code> 
+	shows results for items that are part of the catalog but have not been digitized. By 
+	default the value is null.  If an invalid value is entered the search will fail.<br>
+	
+	<h4>Collection</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures
+	/search/?q=world war 2&co=hec&fo=json', json:true}
+	</pre>
+	The collection parameter is <code>co</code>.  It narrows the search to items that are 
+	in the collection code provided.  By default this value is null.<br>
+	
+	<h4>Not Collection</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures
+	/search/?q=world war 2&!co=hec&fo=json', json:true}
+	</pre>
+	The not collection parameter is <code>!co</code>.  It searches for items that are not 
+	in the collection code provided.  By default this value is null.<br>
+	
+	<h4>Operator</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures/
+	search/?q=world war 2&op=OR&fo=json', json:true}
+	</pre>
+	The operator parameter is <code>op</code>.  The operator determines how the search terms
+	relate to each other.  <code>AND</code> will return items that have a hit for all the 
+	search terms anywhere in the search field.  <code>OR</code> will return items that have 
+	a hit for at least one of the search terms.  <code>PHRASE</code> will return items that 
+	have a hit for all terms as one phrase.  By default the value is <code>AND</code>.  If an 
+	invalid value is entered, the search will fallback to the default value.<br>
+	
+	<h4>Variants</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures
+	/search/?q=world war 2&va=TRUE&fo=json', json:true}
+	</pre>
+	The variants parameter is <code>va</code>.  It takes a boolean value.  I am not sure what 
+	this parameter does.  The Library of Congress documentation does not say what it does.  I 
+	cannot tell what is does from performing searches with both true and false values. By 
+	default the value id <code>TRUE</code>.<br>
+	
+	<h4>Fields</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures
+	/search/?q=world war 2&fi=title&fo=json', json:true}
+	</pre>
+	The fields parameter is <code>fi</code>.  The field is the area(s) where the search term(s) 
+	are looked for.  The default is all text fields.  <code>subject</code> will search the 
+	subject field.  <code>author</code> will search by author/creator.  <code>title</code> will 
+	search the titles.  <code>number</code> will search the number fields, which include the call 
+	number and reproduction number.  If an invalid value is entered, the search will fallback to 
+	the default value.
+	
+	<p>The next section of the guide will be discuss the results parameters.</p>

@@ -1,0 +1,35 @@
+<h3>The Response Infromation</h3>
+	<p>This section will discuss the information that is sent back in the 
+	response.  The response from the Search API has 9 fields.  This section 
+	will give a brief description of the more important fields of the response.  
+	An example of the full response can be seen
+	<a href='http://loc.gov/pictures/search/?q=world%20war%20ii&fo=json'>here</a>.</p>
+	
+	<h4>Search</h4>
+	The search field contains the research search parameters and thier values.<br>
+	
+	<h4>Views</h4>
+	The view field has links for each search result display style.  The <code>current</code> key 
+	is the value set by the <code>fi</code> parameter.<br>
+	
+	<h4>Facets</h4>
+	The facets field has information about the facet object that is set by the <code>fa</code> 
+	parameter.  <code>filters</code> is an array that contains information for limiting the search 
+	to not_digitized items, items available only at the Library of Congress, and itmes available 
+	anywhere.  The information includes link for the result page.  If a facet is selected as a 
+	search parameter <code>selected</code> will be true.<br>
+	
+	<h4>Links</h4>
+	Links contains the URL for the three types of formatting for the response.<br>
+	
+	<h4>Pages</h4>
+	Pages constains the infromation that is used to create the page naivgation that is found 
+	at the bottom of the search result page.<br>
+	
+	<h4>Results</h4>
+	The results is an array of objects that constains information about the items in the catalog.  
+	The important information is the title, medium, creator, date created, call number, reproduction 
+	number, links to the different size images, and an array of collections codes for the collections 
+	the item is a part of.
+	
+	<p>The next section show how to use the API to display pictures and information about the pictures.</p>

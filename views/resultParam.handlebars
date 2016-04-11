@@ -1,0 +1,63 @@
+<h3>Displaying Search Results</h3>
+	<p>This section is going to look at the parameters that effect how the search 
+	results are displayed.  For the most part these parameters do not have much use 
+	outside of recreating the Library of Congress's search page.  It is important 
+	understand how these parameters work if you want to fully integrate the search 
+	into an application.</p>
+	
+	<h4>Count</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures/
+	search/?q=world war 2&c=10&fo=json', json:true}
+	</pre>
+	The count parameter is <code>c</code>.  It controls how many search results are 
+	displayed on a page.  The value entered will be the number of results per page.  
+	The default value is 20.  If value that is not a number is entered, it will cause 
+	an error (500).<br>
+	
+	<h4>Style</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures/
+	search/?q=world war 2&st=list&fo=json', json:true}
+	</pre>
+	The style parameter is <code>st</code>.  It controls how the search results are 
+	displayed on the page by changing the current value in views object.  There are 
+	four values that can be use.  <code>list</code> will display the results as a list 
+	of items that include a thumbnail of the picture, title, creation date, creator, 
+	call number and reproduction number.  <code>gallery</code> will display the results
+	in a grid with larger thumbnail and the title of the item.  <code>grid</code> will 
+	display the results in a grid with just thumbnails of the pictures.  <code>slideshow</code> 
+	will display the results a slideshow with full size image of the pictures.  The default 
+	value is <code>list</code>.  If an invalid value is entered, current will be set 
+	to the value entered and the display will fallback to the default value.<br>
+	
+	<h4>Strating Page</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures/
+	search/?q=world war 2&sp=2&fo=json', json:true}
+	</pre>
+	The starting page parameter is <code>sp</code>.  It determines which result page is 
+	displayed.  This will effect which items are included in the response object.  If the 
+	starting page is 2 and count is 20, information about items 21-40 will be included in 
+	the response.  The default value is 1.  If value that is not a number or is greater than 
+	the number pages in the serach results is entered, it will cause an error (500).<br>
+	
+	<h4>Starting Index</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures/
+	search/?q=world war 2&si=1&fo=json', json:true}
+	</pre>
+	The starting index parameter is <code>si</code>.  I would avoid using this parameter.  It 
+	can only break the search.  Valid values does not effect the search results and a invalid 
+	value will cause an error (500).<br>
+	
+	<h4>Sort by</h4>
+	<pre>
+	request({url:'http://loc.gov/pictures/
+	search/?q=world war 2&sb=relevance&fo=json', json:true}
+	</pre>
+	The sort by parameters is <code>sb</code>.  This parameter is not implemented.  According 
+	to the documentation the default value is <code>relevance</code>, but using this parameter 
+	with any value, including <code>relevance</code> cause the search to fail.  
+	
+	<p>The next section will discuss the information in the response.</p>

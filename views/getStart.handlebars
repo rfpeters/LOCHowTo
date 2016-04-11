@@ -1,0 +1,33 @@
+<h3>Using the API</h3>	
+	<p>The API is used by sending a GET request to an address starting with <code>http://loc.gov/pictures/</code>.
+	There are different URL options for the API. The URLs have different paramaters and responses.  The response
+	contains the information used to create every HTML page for the Prints and Photographs Online Catalog.  The 
+	information can be used to integrate the Library of Congress data into applications.  The code for each 
+	section links to a page that displays an example of the JSON response.</p>
+	
+	<p><a href='http://loc.gov/pictures/?fo=json'><code>/</code></a><br>The home URL sends a response 
+	containing the featured collections and a list of all the collections.</p>
+	
+	<p><a href='http://loc.gov/pictures/search/?q=world%20war%20ii&fo=json'><code>/search/</code></a><br>
+	The search URL sends a response containing the information used to create the search result page.</p>
+	
+	<p><a href='http://loc.gov/pictures/related/?fi=title&q=war&fo=json'><code>/related/</code></a><br>
+	The related is similar to search but is more focused.  Related looks for an exact match of the search
+	term(s) in the given field.  Related is more likely to return no search results.  It is better to use 
+	search unless you know exactly what you are looking for.</p>
+	
+	<p><a href='http://www.loc.gov/pictures/collection/ahii/?fo=json'><code>/collection/[code]</code></a><br>
+	The collection URL sends a response with summary information about a collection of pictures.  A collection 
+	code is required.</p>
+	
+	<p><a href='http://loc.gov/pictures/resource/ppmsc.03034/?fo=json'><code>/resource/[id]</code></a><br>
+	The resource URL sends a response with information that describes a digitized object.  A collection id 
+	is required.</p>
+	
+	<p><a href='http://loc.gov/pictures/index/subjects/arch?fo=json'><code>/index/[type]/[term]</code></a><br>
+	The index URL send a response constains an array of objects that has information about related searchs that 
+	start with the <code>[term]</code>.
+	
+	<p>The search URL has several parameters that influence the search results.  Parameters are 
+	used by adding a <code>?</code> after the URL, followed by the parameter name and value.  Parameters are 
+	seperated by <code>&</code>.  The next section will discuss the search option parameters.</p>

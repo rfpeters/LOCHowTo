@@ -1,0 +1,47 @@
+<!--
+Author: Ryan Peters
+Date: 03/07/16
+Assignment: How To
+Descritption:  Handlebar layout file.  The body is created in the view files.
+-->
+<!doctype html>
+<html>
+  <head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>How To: Library of Congress Pictures</title>	
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+  </head>
+  <body>
+	<div class='page'>
+		<div class='page_header'>
+			<h1>{{title}}</h1>
+		</div>
+		<div class='body'>
+			<div class='text'>
+				{{{body}}}
+			</div>
+			<div class='navigation'>
+				<h4>Sections</h4>
+				<ol>
+					<li><a href='/intro'>Section 1: Introduction</a></li>
+					<li><a href='/usingAPI'>Section 2: Using the API</a></li>
+					<li><a href='searchParam'>Section 3: Search Parameters</a></li>
+					<li><a href='/resultParam'>Section 4: Result Parameters</a></li>
+					<li><a href='/response'>Section 5: Response</a></li>
+					<li><a href='/dispPics'>Section 6: Displaying Pictures</a></li>
+				</ol>
+			</div>
+		</div>
+		<div class='pager'>
+			{{#if prev}}
+				<a href={{prev}}>Prev</a>
+			{{/if}}
+			{{#if next}}
+				<a href={{next}}>Next</a>
+			{{/if}}
+		</div>
+	</div>
+  </body>
+</html>

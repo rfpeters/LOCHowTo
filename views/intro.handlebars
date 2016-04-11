@@ -1,0 +1,48 @@
+<h3 class='sub_header'>About this guide</h3>
+	<p>The Library of Congress is developing a Web API for accessing the Prints and Photographs Online Catalog.
+	The API allows you to search the catalog, get information on the collections, view information about items 
+	in the catalog.  Queries can return HTML code, JSON objects, or RSS objects. There will be a brief overview 
+	of the API.  This guide is going to focus on the search options.</p>
+	
+	<p>I will focus on using JSON and Javascript for interacting with the API.  Any language can be used to send 
+	the request, as long as the right information is sent.  The documentation provided be the Library of Congress
+	does not go into detail about the search paramaters or the information in the response.  The purpose of this 
+	guide is to provide more information about using the API.</p>
+	
+	<p>We need to get Node.js setup to make calls from the server.  Node.js needs the <code>request</code> module 
+	to make request from the server and the <code>body-parser</code> module to handle the JSON objects.  The modules 
+	can be installed using <code>npm</code> using the command line.
+	<pre>
+	npm install request --save
+	npm install body-parser --save
+	</pre>
+	The <code>--save</code> option add the modules to the dependencies in a <code>package.json</code> file.  With the 
+	modules installed, they need to be added to the Node file.
+	<pre>
+	var bodyParser = require('body-parser');
+	var request = require('request');
+	</pre>
+	The body-parser and request are stored as variables that can be used access the modules.  
+	<pre>
+	app.use(bodyParser.json);
+	</pre>
+	The application is setup to use bodyParser for handling JSON objects.
+	<pre>
+	request({url:'http://loc.gov/pictures
+	/search/?q=world war 2&fo=json', json:true}, callback())
+	</pre>
+	The request takes two arguments, the first is an options object and the second is a callback function.  For sending 
+	request to the Library of Congress API, two options need to be included in the options object.  The first is <code>url</code> 
+	and the second is <code>json</code>.  The value for the <code>url</code> is the URL the request is being sent to.  The 
+	<code>json</code> option takes a boolean value and sets the request to handle json objects.</p>
+	
+	<div>
+		<h4>More Information</h4>
+		<ul>
+			<li><a href=https://www.npmjs.com/package/request>Request</a></li>
+			<li><a href=https://www.npmjs.com/package/body-parser>Body-Parser</a></li>
+			<li><a href='http://www.loc.gov/pictures/api'>Library of Congress API</a></li>
+		</ul>
+	</div>
+	
+	<p>The next section will breifly discribe the URLs used for the API calls.</p>
